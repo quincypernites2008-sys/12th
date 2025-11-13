@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="One year anniversary gift for my love - an interactive love story website">
+    <meta name="theme-color" content="#ff69b4">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Our Love Story">
+    <title>Our Love Story — One Year Anniversary ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-pink: #ffc0cb;
+            --dark-pink: #ffb6c1;
+            --soft-gold: #f4d4a8;
+            --cream: #fffaf0;
+            --white: #ffffff;
+            --text-dark: #4a4a4a;
+            --text-light: #888888;
+            --accent: #ff69b4;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fff5f7 0%, #fffaf0 100%);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-user-select: text;
+            user-select: text;
+        }
+
+        /* ========================= ANIMATIONS ========================= */
+        @keyframes float-up {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float-heart {
+            0% {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) rotate(360deg);
+            }
+        }
+
+        @keyframes pulse-heart {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink-cursor {
+            0%, 100% {
+                border-color: var(--accent);
+            }
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        @keyframes slide-in-left {
+            0% {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slide-in-right {
+            0% {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* ========================= SECTIONS STYLING ========================= */
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 2rem;
+            scroll-margin-top: 0px;
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            padding: 0 1rem;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 1024px) {
+            section {
+                padding: 2.5rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 2rem 1rem;
+                min-height: auto;
+            }
+
+            .container {
+                padding: 0 0.75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            section {
+                padding: 1.5rem 0.75rem;
+            }
+
+            .container {
+                padding: 0 0.5rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            section {
+                padding: 1rem 0.5rem;
+            }
+
+            .container {
+                padding: 0 0.25rem;
+            }
+        }
+
+        /* ========================= LANDING PAGE ========================= */
+        #landing {
+            background: linear-gradient(135deg, rgba(255, 192, 203, 0.15) 0%, rgba(244, 212, 168, 0.15) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .landing-content {
+            text-align: center;
+            z-index: 10;
+            animation: float-up 1s ease-out;
+        }
+
+        .landing-content h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2rem, 10vw, 4.5rem);
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-weight: 400;
+            word-break: break-word;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .landing-content p {
+            font-size: clamp(0.9rem, 4vw, 1.3rem);
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            word-break: break-word;
+            text-align: center;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--dark-pink), var(--accent));
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+            touch-action: manipulation;
+            min-width: 200px;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.4);
+        }
+
+        .cta-button:active {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 480px) {
+            .cta-button {
+                padding: 0.85rem 2rem;
+                min-width: 180px;
+            }
+        }
+
+        /* Floating hearts background */
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 2rem;
+            animation: float-heart 4s ease-in infinite;
+            opacity: 0.6;
+        }
+
+        /* ========================= FAVORITE THINGS ========================= */
+        #favorite-things {
+            background: linear-gradient(135deg, rgba(255, 192, 203, 0.1) 0%, rgba(255, 182, 193, 0.1) 100%);
+        }
+
+        .favorite-section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1.8rem, 6vw, 3rem);
+            color: var(--accent);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hearts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .heart-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(255, 105, 180, 0.15);
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            user-select: none;
+            word-break: break-word;
+        }
+
+        .heart-card:hover {
+            transform: scale(1.05) translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.25);
+            border-color: var(--primary-pink);
+        }
+
+        .heart-card:active {
+            transform: scale(1.02) translateY(-5px);
+        }
+
+        .heart-icon {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+            animation: pulse-heart 1.5s ease-in-out infinite;
+        }
+
+        .heart-card.revealed {
+            background: linear-gradient(135deg, var(--primary-pink), var(--soft-gold));
+            color: var(--white);
+        }
+
+        .heart-card.revealed .heart-icon {
+            animation: none;
+        }
+
+        .heart-title {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-top: 1rem;
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+        }
+
+        .heart-card.revealed .heart-title {
+            color: var(--white);
+        }
+
+        @media (max-width: 1024px) {
+            .hearts-grid {
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+                gap: 1.2rem;
+            }
+
+            .heart-card {
+                padding: 1.5rem;
+                min-height: 180px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hearts-grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 1rem;
+            }
+
+            .heart-card {
+                padding: 1.2rem;
+                min-height: 160px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hearts-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+
+            .heart-card {
+                padding: 1rem;
+                min-height: 140px;
+            }
+        }
+
+        /* ========================= MEMORIES GALLERY ========================= */
+        #memories {
+            background: var(--white);
+        }
+
+        .memories-section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1.8rem, 6vw, 3rem);
+            color: var(--accent);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: clamp(200px, 30vw, 300px);
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(255, 192, 203, 0.2);
+            transition: all 0.4s ease;
+            background: linear-gradient(135deg, var(--primary-pink), var(--soft-gold));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 192, 203, 0.3);
+        }
+
+        .gallery-item:active {
+            transform: scale(1.02);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: clamp(0.8rem, 2vw, 1rem);
+            font-weight: 600;
+            transition: all 0.4s ease;
+            text-align: center;
+            padding: 1rem;
+            word-break: break-word;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .random-memory-btn {
+            background: linear-gradient(135deg, var(--dark-pink), var(--accent));
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 105, 180, 0.2);
+            display: block;
+            margin: 0 auto;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            min-width: 160px;
+        }
+
+        .random-memory-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
+        }
+
+        .random-memory-btn:active {
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 1024px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+
+            .gallery-item {
+                height: 180px;
+                will-change: transform;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .gallery-item {
+                height: clamp(160px, 50vw, 200px);
+            }
+
+            .gallery-overlay {
+                padding: 0.75rem;
+            }
+        }
+
+        /* ========================= VIDEO ITEM STYLING ========================= */
+        .video-item {
+            position: relative;
+            cursor: pointer;
+            background: #000;
+        }
+
+        .video-item video {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .video-overlay {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .video-overlay p {
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .video-item:hover .video-overlay {
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        /* ========================= LOVE LETTER ========================= */
+        #love-letter {
+            background: linear-gradient(135deg, rgba(244, 212, 168, 0.15) 0%, rgba(255, 182, 193, 0.15) 100%);
+        }
+
+        .letter-container {
+            background: var(--white);
+            padding: clamp(1.5rem, 4vw, 3rem);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(255, 192, 203, 0.2);
+            max-width: 700px;
+            margin: 0 auto;
+            border: 2px solid var(--primary-pink);
+            word-break: break-word;
+            hyphens: auto;
+        }
+
+        .letter-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: var(--accent);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .typing-text {
+            font-size: clamp(0.85rem, 1.5vw, 1rem);
+            line-height: 1.8;
+            color: var(--text-dark);
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            min-height: 200px;
+            border-right: 3px solid var(--accent);
+            animation: blink-cursor 1s infinite;
+            padding-right: 5px;
+            hyphens: auto;
+        }
+
+        .typing-text.complete {
+            border-right: none;
+            animation: none;
+        }
+
+        .letter-signature {
+            margin-top: 2rem;
+            text-align: right;
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(1.3rem, 4vw, 1.8rem);
+            color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            .letter-container {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .letter-container {
+                padding: 1.2rem;
+                margin: 0 0.5rem;
+            }
+        }
+
+        /* ========================= FOOTER ========================= */
+        footer {
+            background: var(--cream);
+            padding: clamp(1.5rem, 3vw, 2rem);
+            text-align: center;
+            color: var(--text-light);
+            font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+            border-top: 2px solid var(--primary-pink);
+            word-break: break-word;
+            hyphens: auto;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        @media (max-width: 480px) {
+            footer {
+                padding: 1rem;
+                font-size: 0.75rem;
+            }
+        }
+
+        /* ========================= SCROLL REVEAL ========================= */
+        .reveal {
+            opacity: 0;
+            animation: float-up 0.8s ease-out forwards;
+        }
+
+        /* ========================= MODAL RESPONSIVE ========================= */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* ========================= TOUCH-FRIENDLY ADJUSTMENTS ========================= */
+        @media (hover: none) and (pointer: coarse) {
+            /* Mobile devices - remove hover effects */
+            button:hover,
+            .heart-card:hover,
+            .gallery-item:hover,
+            .dream-card:hover {
+                transform: none;
+            }
+
+            /* Ensure minimum touch targets */
+            button,
+            .heart-card,
+            .gallery-item,
+            .dream-card,
+            .quiz-question label,
+            nav a {
+                min-height: 44px;
+                min-width: 44px;
+            }
+        }
+
+        /* ========================= DESKTOP SPECIFIC ========================= */
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1200px;
+            }
+
+            section {
+                padding: 6rem 2rem 4rem;
+            }
+
+            nav {
+                gap: 2.5rem;
+                padding: 1.2rem 2rem;
+            }
+        }
+
+        /* ========================= LARGE DESKTOP ========================= */
+        @media (min-width: 1920px) {
+            section {
+                padding: 7rem 4rem 5rem;
+            }
+
+            .container {
+                max-width: 1400px;
+                margin: 0 auto;
+            }
+
+            nav {
+                gap: 3rem;
+                padding: 1.5rem 4rem;
+            }
+
+            nav a {
+                font-size: 1rem;
+                padding: 0.6rem 1.2rem;
+            }
+        }
+
+        /* ========================= SMALL MOBILE ========================= */
+        @media (max-width: 360px) {
+            nav a {
+                font-size: 0.6rem;
+                padding: 0.3rem 0.4rem;
+            }
+
+            .landing-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .hearts-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hidden-star {
+                font-size: 1.3rem;
+            }
+
+            .hidden-star:hover {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* ========================= TABLET LANDSCAPE ========================= */
+        @media (max-width: 1024px) and (orientation: landscape) {
+            section {
+                min-height: auto;
+                padding: 4rem 2rem 2rem;
+            }
+
+            nav {
+                gap: 1.2rem;
+                padding: 0.8rem 1.2rem;
+            }
+        }
+
+        /* ========================= ACCESSIBILITY ========================= */
+        button:focus,
+        a:focus {
+            outline: 3px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* Improve text selection */
+        ::selection {
+            background: var(--primary-pink);
+            color: var(--text-dark);
+        }
+    </style>
+</head>
+<body>
+    <!-- ========================= LANDING PAGE ========================= -->
+    <section id="landing">
+        <div class="floating-hearts" id="floating-hearts"></div>
+        <div class="container">
+            <div class="landing-content">
+                <h1>Happy Anniversary, My Love ❤️</h1>
+                <p>One year of beautiful memories together</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================= BACKGROUND MUSIC ========================= -->
+    <!-- Add your audio file here. You can use a direct link to a streaming service or upload your own file. -->
+    <audio id="background-music" loop style="display: none;">
+        <!-- Using a public stream - you can replace this with a direct link to "18" by One Direction or any royalty-free romantic music -->
+        <source src="https://assets.mixkit.co/active_storage/music_files/15047/15047-preview.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- ========================= FAVORITE THINGS SECTION ========================= -->
+    <section id="favorite-things">
+        <div class="container">
+            <h2>My Favorite Things About You 💗</h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 2rem; font-size: 0.95rem;">
+                Click each heart to reveal something I love about you!
+            </p>
+            <div class="hearts-grid">
+                <!-- Heart 1 -->
+                <div class="heart-card" onclick="revealHeart(this)">
+                    <div class="heart-icon">❤️</div>
+                    <div class="heart-title">Click me...</div>
+                    <div style="display: none;">Lips</div>
+                </div>
+
+                <!-- Heart 2 -->
+                <div class="heart-card" onclick="revealHeart(this)">
+                    <div class="heart-icon">💕</div>
+                    <div class="heart-title">Click me...</div>
+                    <div style="display: none;">Eyes</div>
+                </div>
+
+                <!-- Heart 3 -->
+                <div class="heart-card" onclick="revealHeart(this)">
+                    <div class="heart-icon">💖</div>
+                    <div class="heart-title">Click me...</div>
+                    <div style="display: none;">Boobs</div>
+                </div>
+
+                <!-- Heart 4 -->
+                <div class="heart-card" onclick="revealHeart(this)">
+                    <div class="heart-icon">💝</div>
+                    <div class="heart-title">Click me...</div>
+                    <div style="display: none;">Ass</div>
+                </div>
+
+                <!-- Heart 5 -->
+                <div class="heart-card" onclick="revealHeart(this)">
+                    <div class="heart-icon">💞</div>
+                    <div class="heart-title">Click me...</div>
+                    <div style="display: none;">YOU</div>
+                </div>
+
+                <!-- Heart 6 -->
+                <div class="heart-card" onclick="revealHeart(this)">
+                    <div class="heart-icon">💓</div>
+                    <div class="heart-title">Click me...</div>
+                    <div style="display: none;">Kakupalan</div>
+                </div>
+
+                <!-- Heart 7 -->
+                <div class="heart-card" onclick="revealHeart(this)">
+                    <div class="heart-icon">💗</div>
+                    <div class="heart-title">Click me...</div>
+                    <div style="display: none;">Kasungitan</div>
+                </div>
+
+                <!-- Heart 8 -->
+                <div class="heart-card" onclick="revealHeart(this)">
+                    <div class="heart-icon">💘</div>
+                    <div class="heart-title">Click me...</div>
+                    <div style="display: none;">Pagmamahal mo</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================= MEMORIES GALLERY ========================= -->
+    <section id="memories">
+        <div class="container">
+            <h2>Our Memories Gallery 📸</h2>
+            <div class="gallery-grid">
+                <!-- Photo 1 -->
+                <div class="gallery-item" style="background-image: url('photos/1.png'); background-size: cover; background-position: center;">
+                </div>
+
+                <!-- Photo 2 -->
+                <div class="gallery-item" style="background-image: url('photos/2.png'); background-size: cover; background-position: center;">
+                </div>
+
+                <!-- Photo 3 -->
+                <div class="gallery-item" style="background-image: url('photos/3.png'); background-size: cover; background-position: center;">
+                </div>
+
+                <!-- Photo 4 -->
+                <div class="gallery-item" style="background-image: url('photos/4.png'); background-size: cover; background-position: center;">
+                </div>
+
+                <!-- Video 5 -->
+                <div class="gallery-item video-item" onclick="playVideo(event)">
+                    <video width="100%" height="100%" style="object-fit: cover;">
+                        <source src="videos/video1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="gallery-overlay video-overlay">
+                        <div style="font-size: 3rem;">▶️</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================= LOVE LETTER SECTION ========================= -->
+    <section id="love-letter">
+        <div class="container">
+            <div class="letter-container">
+                <h2 class="letter-title">My Love Letter to You</h2>
+                <div class="typing-text" id="typing-letter"></div>
+                <div class="letter-signature">Forever Yours</div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ========================= JAVASCRIPT ========================= -->
+    <script>
+        // ========================= FLOATING HEARTS ANIMATION =========================
+        function createFloatingHeart() {
+            const hearts = ['❤️', '💕', '💖', '💗', '💝', '💞'];
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (3 + Math.random() * 2) + 's';
+            heart.style.fontSize = (1.5 + Math.random() * 1) + 'rem';
+            
+            const floatingContainer = document.getElementById('floating-hearts');
+            if (floatingContainer) {
+                floatingContainer.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }
+        }
+
+        // Create hearts continuously
+        setInterval(createFloatingHeart, 500);
+
+        // ========================= SCROLL FUNCTIONALITY =========================
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // ========================= BACKGROUND MUSIC =========================
+        function playAudio() {
+            const audio = document.getElementById('background-music');
+            if (audio) {
+                audio.volume = 0.3; // Set to 30% volume for background
+                audio.play().catch(err => {
+                    console.log('Autoplay was prevented. User needs to interact first.');
+                });
+            }
+        }
+
+        // Ensure music plays on user interaction
+        document.addEventListener('click', function() {
+            const audio = document.getElementById('background-music');
+            if (audio && audio.paused) {
+                audio.play().catch(err => {
+                    console.log('Audio play error:', err);
+                });
+            }
+        });
+
+        // ========================= HEART CARD REVEAL =========================
+        function revealHeart(element) {
+            if (element.classList.contains('revealed')) {
+                return; // Already revealed, don't toggle
+            }
+
+            element.classList.add('revealed');
+            const hiddenText = element.querySelector('div:nth-child(3)');
+            const titleDiv = element.querySelector('.heart-title');
+
+            if (hiddenText && titleDiv) {
+                titleDiv.textContent = hiddenText.textContent;
+            }
+        }
+
+        // ========================= RANDOM MEMORY FUNCTION =========================
+        function showRandomMemory() {
+            const memories = document.querySelectorAll('.gallery-item');
+            if (memories.length > 0) {
+                const randomIndex = Math.floor(Math.random() * memories.length);
+                memories[randomIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Add a pulse effect
+                memories[randomIndex].style.animation = 'none';
+                setTimeout(() => {
+                    memories[randomIndex].style.animation = 'pulse-heart 0.6s ease-in-out';
+                }, 10);
+            }
+        }
+
+        // ========================= VIDEO PLAYBACK FUNCTION =========================
+        function playVideo(event) {
+            event.stopPropagation();
+            const videoItem = event.currentTarget;
+            const video = videoItem.querySelector('video');
+            
+            if (video) {
+                if (video.paused) {
+                    video.play();
+                    videoItem.querySelector('.video-overlay').style.display = 'none';
+                } else {
+                    video.pause();
+                    videoItem.querySelector('.video-overlay').style.display = 'flex';
+                }
+            }
+        }
+
+        // ========================= TYPING ANIMATION =========================
+        const letterText = `My Dearest Love,
+
+Isang taon mo na akong inaaway at sinusungitan. Mahal na mahal kita, palagi yan kahit nag aaway tayo.
+
+Pasensya na di ko kayang isulat to baby, pangit talaga handwriting ko HAHAHHAHAHAHAHHAHAHA pero dito naman ako magaling eh hehehe.
+
+Wag na matigas ang ulo baby ha? Makinig pag pinagsabihan, ayaw ko lang naman na magkasakit ka. Wag pairalin ang ego, di naman tayo pumasok sa relasyon na to para Manalo sa isa't-isa eh, pumasok tayo dito para mag mahalan.
+
+Thank you sa lahat lahat baby ko! Naa-appreciate ko lahat ng nagawa mo sakin! Sa pagbigay ng mga gusto ko kahit natatakot ka pa, naappreciate ko talaga yan. 
+Thank you sobra sobra babyyy. 
+
+Forever and always,
+Your Hubby ❤️`;
+
+        function typeOutText() {
+            const element = document.getElementById('typing-letter');
+            if (!element) return;
+
+            let index = 0;
+            element.textContent = '';
+
+            function type() {
+                if (index < letterText.length) {
+                    element.textContent += letterText[index];
+                    index++;
+                    setTimeout(type, 30); // Adjust speed here (lower = faster)
+                } else {
+                    element.classList.add('complete');
+                }
+            }
+
+            type();
+        }
+
+        // ========================= INTERSECTION OBSERVER FOR SCROLL REVEALS =========================
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                }
+            });
+        }, observerOptions);
+
+        // Observe cards
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.heart-card, .gallery-item').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Start typing animation when love letter section is visible
+            const loveLetter = document.getElementById('love-letter');
+            const letterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !document.getElementById('typing-letter').textContent) {
+                        typeOutText();
+                        letterObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            if (loveLetter) {
+                letterObserver.observe(loveLetter);
+            }
+        });
+    </script>
+</body>
+</html>
